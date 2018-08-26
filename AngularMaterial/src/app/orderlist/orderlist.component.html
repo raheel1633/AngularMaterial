@@ -1,0 +1,27 @@
+<div fxLayoutAlign="center center">
+    <mat-form-field fxFlex="100%">
+        <input type="text" matInput (keyup)="doFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+</div>
+
+<mat-table [dataSource]="datasource" matSort>
+  <ng-container matColumnDef="orderNo">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Order No</mat-header-cell>
+    <mat-cell *matCellDef="let elem">{{elem.orderNo}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="poNumber">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>PO No</mat-header-cell>
+      <mat-cell *matCellDef="let elem">{{elem.poNumber}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+</mat-table>
+
+<mat-paginator
+[pageSize]="10"
+[pageSizeOptions]="[2, 5, 10, 20]"
+showFirstLastButtons>
+</mat-paginator>

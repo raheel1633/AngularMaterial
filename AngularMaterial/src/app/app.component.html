@@ -1,0 +1,58 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav role="navigation">
+   <mat-nav-list>
+    <a *ngIf="!isLoggedIn()" mat-list-item [routerLink]="['/signup']" (click)="sidenav.close()">
+      <mat-icon>face</mat-icon>
+      <span>Signup</span>
+    </a>
+    <a *ngIf="!isLoggedIn()" mat-list-item [routerLink]="['/login']" (click)="sidenav.close()">
+      <mat-icon>input</mat-icon>
+      <span>Login</span>
+    </a>
+    <a *ngIf="isLoggedIn()" mat-list-item [routerLink]="['/orderlist']" (click)="sidenav.close()">
+      <mat-icon>input</mat-icon>
+      <span>Orders</span>
+    </a>
+    <mat-list-item *ngIf="isLoggedIn()">
+      <button style="cursor: pointer" (click)="onLogout()" mat-icon-button (click)="sidenav.close()">
+          <mat-icon>eject</mat-icon>
+          <span>Logout</span>
+      </button>
+    </mat-list-item>
+   </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <div fxHide.gt-xs>
+        <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+      <div><a [routerLink]="['/']" >Left Foot Software</a></div>
+      <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+        <ul fxLayout fxLayoutGap="10px" class="navigation-items">
+            <li *ngIf="isLoggedIn()">
+                <a [routerLink]="['/orderlist']">Orders</a>
+            </li>
+          <li *ngIf="!isLoggedIn()">
+                <a [routerLink]="['/signup']">Signup</a>
+            </li>
+          <li *ngIf="!isLoggedIn()">
+              <a [routerLink]="['/login']">Login</a>
+          </li>
+
+          <li *ngIf="isLoggedIn()">
+              <a style="cursor: pointer" (click)="onLogout()">Logout</a>
+          </li>
+        </ul>
+
+      </div>
+    </mat-toolbar>
+    <main>
+        <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
