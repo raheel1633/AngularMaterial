@@ -1,11 +1,11 @@
 
 export interface Order {
-    orderid: number;
-    cleintId?: number;
-    orderNo: string;
-    poNumber: string;
-    customer?: string;
-    startDate?: string;
-    endDate?: string;
-
+  DTO: {
+    order_id: number;
+    order_no: string;
+    po_number: string;
+    start_date?: string;
+    end_date?: string;
+    BillTo: null;
+  };
 }
