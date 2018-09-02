@@ -48,6 +48,22 @@ login(authdata: AuthData) {
     // this.router.navigate(['/welcome']);
 }
 
+getUserRoles(user_id: any) {
+  // httpOptions.headers.append('Authorization', 'Basic ' + model)
+  return this.http.get(this.baseUrl + 'UserRole/' + user_id, { headers: { 'Authorization': localStorage.getItem('token') }})
+    .pipe(
+    map((response: any) => {
+      const data = response;
+      console.log(data, 'userRoles');
+      if (data) {
+        // this.decodedToken = this.jwtHelper.decodeToken(user.token);
+        // console.log(this.decodedToken);
+        return data;
+     }
+    })
+  );
+}
+
 logout() {
 
 this.user = null;

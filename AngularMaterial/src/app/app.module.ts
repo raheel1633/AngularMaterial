@@ -17,6 +17,7 @@ import { AuthGuard } from './_guards/auth.guard';
 import { OrderlistComponent } from './orderlist/orderlist.component';
 import { OrderService } from './_service/order.service';
 import { UiService } from './_service/ui.service';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
    declarations: [
@@ -24,7 +25,8 @@ import { UiService } from './_service/ui.service';
       LoginComponent,
       WelcomeComponent,
       SignupComponent,
-      OrderlistComponent
+      OrderlistComponent,
+      HomeComponent
    ],
    imports: [
       BrowserModule,

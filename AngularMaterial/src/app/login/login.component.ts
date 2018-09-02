@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       email: form.value.email,
       password: form.value.password
     }).subscribe(next => {
-      this.router.navigate(['/welcome']);
+      this.router.navigate(['/home']);
     }, error => {
       console.log(error.error.error.message);
          this.snackbar.open(error.error.error.message, null, {
