@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material';
 })
 export class LoginComponent implements OnInit {
   isLoading = false;
+  isLoadingResults = false;
 
   constructor(private authservice: AuthService,
     private router: Router, private snackbar: MatSnackBar) { }
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
   onSubmit(form: NgForm) {
 
     console.log(form);
+    this.isLoadingResults = true;
 
     this.authservice.login({
       email: form.value.email,
@@ -28,6 +30,7 @@ export class LoginComponent implements OnInit {
     }).subscribe(next => {
       this.router.navigate(['/home']);
     }, error => {
+      this.isLoadingResults = false;
       console.log(error.error.error.message);
          this.snackbar.open(error.error.error.message, null, {
            duration: 3000

@@ -1,4 +1,8 @@
 <section>
+    <div class="example-loading-shade"
+    *ngIf="isLoadingResults">
+  <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+</div>
     <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f="ngForm" (ngSubmit)="onSubmit(f)">
       <mat-form-field>
         <input type="email" matInput placeholder="User Name" ngModel name="email"
