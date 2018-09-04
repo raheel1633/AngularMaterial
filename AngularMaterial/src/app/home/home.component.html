@@ -3,8 +3,8 @@
   <mat-card-content fxLayoutAlign="center">
       <mat-form-field>
           <mat-select placeholder="Client" [value]="client" (selectionChange)="selectClient($event.value)">
-            <mat-option *ngFor="let c of clients" [value]="c.client_id">
-              {{c.client_name}}
+            <mat-option *ngFor="let c of clients" [value]="c.Client.LFSObject._id">
+              {{c.Client.LFSObject._description}}
             </mat-option>
           </mat-select>
         </mat-form-field>

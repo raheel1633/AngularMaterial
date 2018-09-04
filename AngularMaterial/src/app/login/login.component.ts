@@ -31,8 +31,8 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/home']);
     }, error => {
       this.isLoadingResults = false;
-      console.log(error.error.error.message);
-         this.snackbar.open(error.error.error.message, null, {
+      console.log(error.message);
+         this.snackbar.open(error.message, null, {
            duration: 3000
          });
     });

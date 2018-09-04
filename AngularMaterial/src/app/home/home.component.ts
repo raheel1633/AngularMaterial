@@ -20,7 +20,7 @@ client: Client;
 
   getUserRoles() {
     this.authservice.getUserRoles(localStorage.getItem('user_id')).subscribe(next => {
-    this.clients = next.clients;
+    this.clients = next.LFSObject.DTO.Clients;
     // this.selectedClient = this.clients[0].client_name;
     // console.log(this.client);
 

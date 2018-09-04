@@ -29,14 +29,18 @@ registerUser(authdata: AuthData) {
 }
 
 login(authdata: AuthData) {
-  const postData = btoa(authdata.email + ':' + authdata.password);
-  return this.http.get(this.baseUrl + 'login', { headers: { 'Authorization': 'Basic ' + postData }})
+  console.log(authdata, 'authdata');
+  const data = { 'username': authdata.email, 'password': authdata.password };
+  console.log(data);
+  // const postData = btoa(authdata.email + ':' + authdata.password);
+  // return this.http.get(this.baseUrl + 'login', { headers: { 'Authorization': 'Basic ' + postData }})
+  return this.http.post(this.baseUrl + 'login', data)
     .pipe(
     map((response: any) => {
       const user = response;
       console.log(user, 'user');
       if (user) {
-        localStorage.setItem('token', btoa(user.key));
+        localStorage.setItem('token', user.token);
         localStorage.setItem('user_id', user.user_id);
         this.authchange.next(true);
         // this.decodedToken = this.jwtHelper.decodeToken(user.token);
@@ -50,7 +54,7 @@ login(authdata: AuthData) {
 
 getUserRoles(user_id: any) {
   // httpOptions.headers.append('Authorization', 'Basic ' + model)
-  return this.http.get(this.baseUrl + 'UserRole/' + user_id, { headers: { 'Authorization': localStorage.getItem('token') }})
+  return this.http.get(this.baseUrl + 'UserRole/' + user_id, { headers: { 'Authorization': 'Bearer ' +  localStorage.getItem('token') }})
     .pipe(
     map((response: any) => {
       const data = response;

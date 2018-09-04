@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://development.leftfootsoftware.com/api/'
+  // apiUrl: 'http://development.leftfootsoftware.com/api/'
+  // apiUrl: 'https://localhost:44331/'
+  // apiUrl: 'https://localhost/api_core/'
+   apiUrl: 'http://development.leftfootsoftware.com/api_core/'
 };
 
 /*
