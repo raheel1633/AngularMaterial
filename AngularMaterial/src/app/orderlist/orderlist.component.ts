@@ -10,7 +10,7 @@ import { tap } from '../../../node_modules/rxjs/operators';
   styleUrls: ['./orderlist.component.css']
 })
 export class OrderlistComponent implements OnInit, AfterViewInit {
-displayedColumns = ['order_no', 'po_number',  '_description', 'start_date', 'end_date'];
+displayedColumns = ['order_no', 'po_number',  '_description', 'start_date', 'end_date', 'actionsColumn'];
 // datasource: Order[] = []; // new MatTableDataSource<Order>();
 datasource = new MatTableDataSource<Order>();
 

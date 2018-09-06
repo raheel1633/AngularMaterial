@@ -1,11 +1,21 @@
 .example-container {
-  position: relative;
-  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  max-height: 550px;
+  min-width: 300px;
+  /* position: relative; */
+  /* padding: 30px; */
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 550px;
 }
 
 .example-table-container {
   position: relative;
   max-height: 550px;
+  min-width: 300px;
   overflow: auto;
 }
 
@@ -24,4 +34,31 @@ table {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* for responsive */
+.mobile-label {
+  display: none;
+}
+
+@media(max-width: 600px) {
+  .mobile-label {
+    width: 80px;
+    display: inline-block;
+        font-weight: bold;
+  }
+
+  .mat-header-row {
+    display: none;
+  }
+
+  .mat-row {
+    flex-direction: column;
+    align-items: start;
+    padding: 8px 24px;
+  }
+
+  .mat-cell:first-child {
+    padding-left: 0px;
+  }
 }

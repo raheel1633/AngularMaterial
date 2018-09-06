@@ -6,7 +6,7 @@
   [mode]="(isHandset$ | async) ? 'over' : 'side'"
   [opened]="!(isHandset$ | async)">
   <mat-toolbar  color="primary">
-      <div><a [routerLink]="['/']">Left Foot Software</a></div>
+      <div><a [routerLink]="['/home']">Left Foot Software</a></div>
   </mat-toolbar>
    <mat-nav-list>
     <a *ngIf="!isLoggedIn()" mat-list-item [routerLink]="['/signup']">

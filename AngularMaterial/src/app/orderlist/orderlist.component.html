@@ -3,45 +3,77 @@
        *ngIf="isLoadingResults">
     <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
   </div>
-  <div class="example-table-container">
+  <!-- <div class="example-table-container"> -->
 
 <mat-table [dataSource]="datasource" matSort>
   <ng-container matColumnDef="order_no">
     <mat-header-cell *matHeaderCellDef mat-sort-header>Order No</mat-header-cell>
-    <mat-cell *matCellDef="let elem">{{elem.DTO.order_no}}</mat-cell>
+    <mat-cell *matCellDef="let elem">
+      <span class="mobile-label">Order No:</span>
+     {{elem.DTO.order_no}}
+    </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="po_number">
       <mat-header-cell *matHeaderCellDef mat-sort-header>PO No</mat-header-cell>
-      <mat-cell *matCellDef="let elem">{{elem.DTO.po_number}}</mat-cell>
+      <mat-cell *matCellDef="let elem">
+     <span class="mobile-label">PO No:</span>
+        {{elem.DTO.po_number}}
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="_description">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Customer</mat-header-cell>
-      <mat-cell *matCellDef="let elem">{{elem.DTO.BillTo.LFSObject._description}}</mat-cell>
+      <mat-cell *matCellDef="let elem">
+          <span class="mobile-label">Customer:</span>
+        {{elem.DTO.BillTo.LFSObject._description}}
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="start_date">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Start Date</mat-header-cell>
-      <mat-cell *matCellDef="let elem">{{elem.DTO.start_date | date}}</mat-cell>
+      <mat-cell *matCellDef="let elem">
+          <span class="mobile-label">Start Date:</span>
+        {{elem.DTO.start_date | date}}
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="end_date">
       <mat-header-cell *matHeaderCellDef mat-sort-header>End Date</mat-header-cell>
-      <mat-cell *matCellDef="let elem">{{elem.DTO.end_date | date}}</mat-cell>
+      <mat-cell *matCellDef="let elem">
+          <span class="mobile-label">End Date:</span>
+        {{elem.DTO.end_date | date}}
+      </mat-cell>
     </ng-container>
+
+    <ng-container matColumnDef="actionsColumn">
+        <mat-header-cell *matHeaderCellDef>
+          <button mat-icon-button color="primary"><i class="fa fa-plus mat-icon"></i></button>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button *ngIf="!row.editing" mat-icon-button color="primary" focusable="false" (click)="row.startEdit()">
+                <i class="fa fa-pencil mat-icon"></i>
+              </button>
+          <button *ngIf="row.editing" mat-icon-button color="primary" focusable="false" (click)="row.confirmEditCreate()">
+                <i class="fa fa-check mat-icon"></i>
+              </button>
+          <button mat-icon-button color="primary" focusable="false" (click)="row.cancelOrDelete()">
+                <i class="fa fa-times mat-icon"></i>
+              </button>
+        </mat-cell>
+      </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
 </mat-table>
-  </div>
-
+  <!-- </div> -->
+</div>
 <mat-paginator
 [length]="resultsLength"
 [pageSize]="15"
 [pageSizeOptions]="[10, 15, 50, 100]"
 showFirstLastButtons>
 </mat-paginator>
-</div>
+
 
