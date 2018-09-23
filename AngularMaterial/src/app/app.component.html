@@ -7,6 +7,7 @@
   [opened]="!(isHandset$ | async)">
   <mat-toolbar  color="primary">
       <div><a [routerLink]="['/home']">Left Foot Software</a></div>
+
   </mat-toolbar>
    <mat-nav-list>
     <a *ngIf="!isLoggedIn()" mat-list-item [routerLink]="['/signup']">
@@ -44,11 +45,16 @@
         <mat-icon>menu</mat-icon>
       </button>
     </div> -->
-           
+    <span class="example-spacer"></span>
+    <span flex></span>
+    <div style="font-size: 15px" *ngIf="isLoggedIn()">
+      <mat-icon style="font-size: 25px">person</mat-icon>
+      Welcome, {{authservice.user?.email}}
+    </div>
     </mat-toolbar>
-    
+
         <router-outlet></router-outlet>
-    
+
   </mat-sidenav-content>
 </mat-sidenav-container>
 

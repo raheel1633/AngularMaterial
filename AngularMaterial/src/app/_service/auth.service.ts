@@ -13,7 +13,7 @@ import { environment } from '../../environments/environment';
 })
 export class AuthService {
 authchange = new Subject<boolean>();
-private user: User;
+public user: User;
 baseUrl = environment.apiUrl;
 
 
@@ -42,6 +42,7 @@ login(authdata: AuthData) {
       if (user) {
         localStorage.setItem('token', user.token);
         localStorage.setItem('user_id', user.user_id);
+        // localStorage.setItem('user_name', authdata.email);
         this.authchange.next(true);
         // this.decodedToken = this.jwtHelper.decodeToken(user.token);
         // console.log(this.decodedToken);
@@ -60,6 +61,11 @@ getUserRoles(user_id: any) {
       const data = response;
       console.log(data, 'userRoles');
       if (data) {
+
+        this.user = {
+          email: data.LFSObject.DTO.first_name,
+          userid: '123'
+         };
         // this.decodedToken = this.jwtHelper.decodeToken(user.token);
         // console.log(this.decodedToken);
         return data;

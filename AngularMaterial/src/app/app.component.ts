@@ -24,9 +24,10 @@ export class AppComponent implements OnInit {
     );
   title = 'app';
   authSubscription: Subscription;
-
+  // this.user_name = localStorage.getItem('user_name');
   constructor(private breakpointObserver: BreakpointObserver, private snackbar: MatSnackBar,
-     private authservice: AuthService) { }
+     public authservice: AuthService) {}
+
 
   ngOnInit() {
       this._hubConnection = new HubConnectionBuilder()
